@@ -1,0 +1,614 @@
+
+ html {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    zoom: 100%;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --pomodoro: #e9e5cd;
+    --shortBreak: #e9e5cd;
+    --longBreak: #e9e5cd;
+  }
+  
+  #js-minutes{
+    position: absolute;
+    top: -30vh;
+    right:105.5vh;
+    font-size: 70vh;
+    font-family: 'Notable', sans-serif;
+  }
+  
+  #js-seconds{
+    position: absolute;
+    bottom: -10vh;
+    right:10vh;
+    font-size: 60vh;
+    font-family: 'Notable', sans-serif;
+  }
+  
+  #aiChat{
+    cursor: pointer;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    font-size: 3vh;
+    text-transform: uppercase;
+    color: #d5cbc9;
+    font-weight: bold;
+    width: 20vh;
+    height: 20vh;
+    background-color: #75420e;
+    border-width: initial;
+    border-style: none;
+    padding: 20px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: absolute;
+    top: -60vh;
+    right:-55vh;
+  }
+
+  #aiChat:hover{
+    background-color: #fff;
+  }
+  
+  #js-mode-buttons{
+    position: absolute;
+    bottom: 0;
+  }
+  body {
+    background-color: #e9e5cd;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    user-select: none;
+    overflow:hidden;
+  }
+  
+  
+  .mode-button {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin: 10px;
+    background: none;
+  }
+  
+  
+  
+  #js-pomodoro{
+    width: 35vh;
+    height: 35vh;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    border-radius: 50%;
+    background-color: #553b08;
+    font-size: 3vh;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5vh;
+    transition: all 0.5s;
+    position: relative;
+    bottom: 0vh;
+    right:25vh;
+    color: #d5cbc9;
+  }
+  
+  #js-short-break{
+    cursor: pointer;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    font-size: 3vh;
+    text-transform: uppercase;
+    color: #d5cbc9;
+    font-weight: bold;
+    width: 20vh;
+    height: 20vh;
+    background-color: #75420e;
+    border-width: initial;
+    border-style: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: relative;
+    bottom: 8vh;
+    right:25vh;
+  }
+  #js-short-break:hover{
+    background-color: #fff;
+  }
+  
+  #js-long-break{
+    cursor: pointer;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    font-size: 3vh;
+    text-transform: uppercase;
+    color: #d5cbc9;
+    font-weight: bold;
+    width: 27.5vh;
+    height: 27.5vh;
+    background-color: #75420e;
+    border-width: initial;
+    border-style: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 5vh;
+    left:-60vh;
+  }
+  #js-long-break:hover{
+    background-color: #fff;
+  }
+  
+  .main-button:hover {
+    background-color: white
+  }
+  
+  #js-pomodoro:hover {
+    background-color: #fff;
+  }
+  
+  .main-button {
+    cursor: pointer;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    font-size: 5vh;
+    text-transform: uppercase;
+    color: #d5cbc9;
+    font-weight: bold;
+    width: 30vh;
+    height: 30vh;
+    background-color: #75420e;
+    border-width: initial;
+    border-style: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 62.5vh;
+    right:67.5vh;
+  }
+  
+  #toDo:hover {
+    background-color: #fff;
+  }
+  
+  #toDo{
+    cursor: pointer;
+    box-shadow: #aaaaaa 0px 6px 0px;
+    font-size: 4vh;
+    text-transform: uppercase;
+    color: #d5cbc9;
+    font-weight: bold;
+    width: 27.5vh;
+    height: 27.5vh;
+    background-color: #75420e;
+    border-width: initial;
+    border-style: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 50.5vh;
+    right:35vh;
+    text-align: center;
+    
+  
+  }
+  
+  
+  button:focus, button:active {
+    outline: none;
+  }
+  
+  .main-button.active {
+    transform: translateY(6px);
+    box-shadow: none;
+    outline: none;
+  }
+  
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+   .counter {
+    border-radius: 10px;
+    max-width: 200vh;
+    min-height: 50vh;
+    display: flex;
+  
+  } 
+  
+  
+  
+  @media screen and (max-width: 550px) {
+    .clock {
+      font-size: 8rem;
+    }
+  
+  }
+  
+  .toggle {
+    position: absolute;
+    width: 100vh; /* Set the width to 100% of the container */
+    height: 100vh; /* Set the height to 100% of the container */
+    opacity: 0.85;
+    top: 0vh;
+    right: 0vh;
+    color: white;
+    backdrop-filter: blur(15px);
+    z-index: 1;
+    display: none;
+    align-items: left;
+  
+
+  }
+  
+  .toggle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(85, 59, 8, 0.89); 
+    backdrop-filter: blur(2vh);
+    z-index: -1;  
+  }
+   
+ 
+
+
+  .toggle2 {
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    opacity: 0.85;
+    top: 0vh;
+    right: 0vh;
+    color: white;
+    backdrop-filter: blur(15px);
+    z-index: 1;
+
+  }
+  
+  .toggle2::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(85, 59, 8, 0.89); 
+    backdrop-filter: blur(2vh);
+    z-index: -1; 
+
+   }
+   
+
+  .textarea {
+    background-color: #dddddd;
+    color: #3b3b3b;
+    padding: 1em;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    font-family: "Heebo", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: all 0.2s;
+    width: 90vh;
+    height: 20vh;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+
+  }
+  .form{
+    align-items: center;
+  }
+
+  .textarea:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+  }
+  
+  .textarea:focus {
+    cursor: text;
+    color: #333333;
+    background-color: white;
+    opacity: 1;
+    border-color: #333333;
+  }
+
+  
+  .send {
+    display: flex;
+    color: #333333;
+    padding: 1vh 3vh;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 10vh; 
+  
+  }
+  
+  .send:hover {
+    border-radius: 5px;
+
+  }
+
+
+  .container {
+    max-width: 80vh;
+    height: 100vh;
+    min-height: 100vh;
+    padding: 30px;
+    color: white;
+  }
+
+
+  .container2 {
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    padding: 30px;
+    color: white;
+  }
+  b {
+    font-size: xx-large;
+  }
+  .answer{
+    font-size: xx-large;
+  }
+  
+  h1 {
+    color: #eee;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .point{
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    font-size: 3em;
+    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .point:hover {
+    background-color: rgba(85, 59, 8, 1);
+  
+  }
+  .point2{
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    font-size: 3em;
+    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .point2:hover {
+    background-color: rgba(85, 59, 8, 1);
+  
+  }
+  .input-container {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  
+  .todo-input {
+    flex: 1;
+    outline: none;
+    padding: 10px 10px 10px 20px;
+    background-color: transparent;
+    border: 2px solid #d5cbc9;
+    border-radius: 30px;
+    color: #eee;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .todo-input::placeholder {
+    color: #eee;
+  }
+  
+  .add-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #eee;
+    font-size: 35px;
+    cursor: pointer;
+    padding: 0.1em 0.4em 0.1em;
+  }
+  
+  .add-button:hover {
+  
+    background-color: rgba(85, 59, 8, 1);
+  
+  }
+  
+  .todo {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+    border-top: 0.1vh solid #553b08; 
+    border-bottom: 0.1vh solid #553b08; 
+    transition: background-color 0.2s ease;
+  }
+  
+  .todo:hover {
+    background-color: rgba(46, 40, 40,0.5); /* Lighter gray on hover */
+    transform: scale(1.02); /* Slightly scale up on hover */
+    box-shadow: 0 4px 8px rgba(102, 81, 81, 0.1); /* Increased shadow on hover */
+  }
+  
+  .todo:first-child {
+    margin-top: 1vh;
+    border-top: 0.3vh solid #553b08; 
+  
+  }
+  
+  .todo:last-child {
+    margin-bottom: 0;
+    border-bottom: 0.3vh solid #553b08; 
+  
+  }
+  
+  .todo label {
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #eee;
+  }
+  
+  label,
+input {
+  display: block;
+  margin-bottom: 10px; /* Add some margin for spacing */
+}
+  .todo span {
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .todo span::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -30px;
+    border-radius: 100px;
+    border: 2px solid #eee;
+  }
+  
+  input[type='checkbox'] {
+    visibility: hidden;
+  }
+  
+  input:checked + span {
+    text-decoration: line-through
+  }
+  
+  .todo:hover input:checked + span::before, input:checked + span::before {
+    background-color: #eee;
+    content: '✓';
+    font-size: 3vh;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .todo:hover span::before {
+    border-color: #eee;
+  }
+  
+  .todo .delete-btn  {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+    font-size: 24px;
+  }
+  
+  .todos-container  {
+    height: 80vh;
+    overflow: overlay;
+    
+  }
+  
+  .todos-container::-webkit-scrollbar-track  {
+    background: rgb(247, 247, 247);
+    border-radius: 20px
+    
+    
+  }
+  
+  .todos-container::-webkit-scrollbar  {
+    width: 0;
+  }
+  
+  .todos-container:hover::-webkit-scrollbar  {
+    width: 7px;
+  }
+  
+  .todos-container::-webkit-scrollbar-thumb  {
+    background: #d5d5d5;
+    border-radius: 20px;
+  }
+  
+  .filters {
+    display: flex;
+    margin-bottom: 25px;
+  
+  }
+  .filters div {
+    margin-left: 2vh;
+  }
+  
+  .filter {
+    color: #eee;
+    padding: 5px 15px;
+    border-radius: 25vh;
+    border: 2px solid #d5cbc9;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .filter.active, .filter:hover {
+    background-color: #d5cbc9;
+  }
+#settingbtn {
+  position: absolute;
+  bottom:5vh;
+  right:5vh;
+}
+
+#settingbtn {
+  background-color: #553b08;;
+  border: none; /* Remove the border */
+  transition: 0.3s;
+  color: white;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 3vh;
+}
+
+#settingbtn:hover {
+  background-color: #d5cbc9;
+}
+
+#btn-right{
+  position: absolute;
+  top:0vh;
+  right:0vh;
+}

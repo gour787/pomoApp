@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Freshman Pomodoro Clock Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <body>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#settings" id="settingbtn">
+      &#9881;
+    </button>
+    
+
+  <div id="settings" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="btn-right" type="button" class="btn btn-default" data-dismiss="modal">&#x2716;</button>
+          <h3 class="modal-title">Settings</h3>
+
+        </div>
+        <div class="modal-body">
+          <h4>Set Timers</h4>
+          <label>Pomodoro Time (minutes):</label>
+          <input type="number" id="pomodoroTime" min="1">
+          <br>
+          <label>Short Break Time (minutes):</label>
+          <input type="number" id="shortBreakTime" min="1">
+          <br>
+          <label>Long Break Time (minutes):</label>
+          <input type="number" id="longBreakTime" min="1">
+          <br>
+          <br>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="updateTimers()">Save & Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+        <div class="button-group mode-buttons" id="js-mode-buttons">
+          <button
+            data-mode="pomodoro"
+            class="button active mode-button"
+            id="js-pomodoro"
+          >
+            Pomodoro
+          </button>
+          <button
+            data-mode="shortBreak"
+            class="button mode-button "
+            id="js-short-break"
+          >
+            Short break
+          </button>
+          <button
+            data-mode="longBreak"
+            class="button mode-button"
+            id="js-long-break"
+          >
+            Long break
+          </button>
+
+          <button
+          class="aiChat"
+          class="button active"
+          id="aiChat"
+        >
+          Sage AI
+        </button>
+
+
+        </div>
+        <div class="clock" id="js-clock">
+          <div id="js-minutes">25</div>
+          <div id="js-seconds">00</div>
+        </div>
+        <button class="main-button " data-action="start" id="js-btn">
+          <span>Start</span>
+        </button>
+        
+        <div class="toggle "id="toggle">
+          <div class="container">
+            <div id="points"class="point">&#9758;</div>
+            <h1>Todo List</h1>
+            <div class="input-container">
+              <input class="todo-input" placeholder="Add a new task...">
+              <button class="add-button">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+            <div class="filters">
+              <div class="filter" data-filter="completed">Complete</div>
+              <div class="filter" data-filter="pending">Incomplete</div>
+            </div>
+            <div class="todos-container">
+              <ul class="todos"></ul>
+    
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="toggle2 "id="toggle2"> 
+          <div class="container2">
+          <div id="points2"class="point2">&#9758;</div>
+          <h1>Sage AI</h1>
+          <form id = "form" method="POST" action="/">
+            <textarea
+              class="textarea"
+              name="message"
+              rows="4"
+              cols="50"
+              placeholder="Enter your message"
+            ><%= message %></textarea>
+            <br />
+            <button type="submit" class = "send" id="send">Submit</button>
+          </form>
+          <div class="answer"><b>AI: </b><%= answer %></div>
+          </div>
+        </div>
+
+        <button
+        data-action="hide"
+        class="button active"
+        id="toDo"
+      >
+      To-Do
+      </button>
+
+
+
+
+    <script src="main.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+  </body>
+</html>
