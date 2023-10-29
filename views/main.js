@@ -145,7 +145,7 @@ const timer = {
 };
 
 function updateTimers() {
-  
+  const { action } = mainButton.dataset;
   const pomodoroTimeInput = document.getElementById("pomodoroTime");
   const shortBreakTimeInput = document.getElementById("shortBreakTime");
   const longBreakTimeInput = document.getElementById("longBreakTime");
@@ -157,6 +157,10 @@ function updateTimers() {
   if (isNaN(pomodoroTime) || isNaN(shortBreakTime) || isNaN(longBreakTime)) {
     alert("Please enter valid numeric values for the timer durations.");
   } else {
+    if(action=='start'){
+      startTimer();
+    }
+    
     stopTimer();
     timer.pomodoro = pomodoroTime;
     timer.shortBreak = shortBreakTime;
