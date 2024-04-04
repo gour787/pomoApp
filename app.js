@@ -33,7 +33,7 @@ app.use(session(sessionConfig))
 
 
 const openai = new OpenAI({
-    apiKey: "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" 
+    apiKey: " "
   });
 
 app.use(bodyParser.json());
